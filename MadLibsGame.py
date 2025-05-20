@@ -1,0 +1,5 @@
+username= input("Enter your name")
+fathername= input("Enter your name")
+mothername= input("Enter your name")
+study= input("Enter your name")
+relation= input("Enter your name")
