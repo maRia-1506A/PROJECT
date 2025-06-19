@@ -24,23 +24,23 @@ print(
 if (computer == mainUser):
     print("Game Draw!")
 else:
-    if (computer == 1 and mainUser == -1):
-        2
+    if ((computer-mainUser) == 1 or (computer-mainUser) == -2):
+        print("You Win!")
+    else:
         print("You Lose!")
-    elif (computer == 1 and mainUser == 0):
-        1
-        print("You Win!")
-    elif (computer == -1 and mainUser == 1):
-        -2
-        print("You Win!")
-    elif (computer == -1 and mainUser == 0):
-        -1
+'''
+    if (computer == 1 and mainUser == -1): computer-mainUser = 2
         print("You Lose!")
-    elif (computer == 0 and mainUser == -1):
-        1
+    elif (computer == 1 and mainUser == 0): computer-mainUser = 1
         print("You Win!")
-    elif (computer == 0 and mainUser == 1):
-        -1
+    elif (computer == -1 and mainUser == 1): computer-mainUser = -2
+        print("You Win!")
+    elif (computer == -1 and mainUser == 0): computer-mainUser = -1
+        print("You Lose!")
+    elif (computer == 0 and mainUser == -1): computer-mainUser = 1
+        print("You Win!")
+    elif (computer == 0 and mainUser == 1): computer-mainUser = -1
         print("You Lose!")
     else:
         print("Something went wrong!")
+'''
