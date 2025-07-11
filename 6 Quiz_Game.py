@@ -10,12 +10,12 @@ def software_development():
         },
         {
             "question": "Which language is commonly used for backend web development??",
-            "option": ["A)HTML", "B) Python", "C) CSS", "D) Excel"],
+            "option": ["A) HTML", "B) Python", "C) CSS", "D) Excel"],
             "answer": "B"
         },
         {
             "question": "What does IDE stand for??",
-            "option": ["A)  Internet Development Editor", "B) Integrated Development Environment", "C) Internal Debugging Extension", "D) Input Data Engine"],
+            "option": ["A) Internet Development Editor", "B) Integrated Development Environment", "C) Internal Debugging Extension", "D) Input Data Engine"],
             "answer": "B"
         },
         {
@@ -62,6 +62,7 @@ def Software_Design_Architecture():
         },
     ]
     serial(quiz)
+    ask_user(quiz)
 
 
 def SDLC():
@@ -93,47 +94,69 @@ def SDLC():
         },
     ]
     serial(quiz)
+    ask_user(quiz)
 
 
-def ask_user(q):
-    ques_numb = 1
+# user input function
+def ask_user(quiz):
     score = 0
-    print(f"Question{ques_numb}: {q["question"]}")
+    '''i: the question number starting from 1 (because of start=1)
+        q: the actual question dictionary (e.g., q["question"], q["option"], etc.'''
+    for i, q in enumerate(quiz, start=1):
+        print(f"Question{i}: {q["question"]}")
 
-    for opt in q["option"]:
-        print(opt)
+        for opt in q["option"]:
+            print(opt)
 
-    user_ans = input("Your answer: ").lower()
-    if user_ans == q["answer"]:
-        print("Correct!")
-        score += 1
-    else:
-        print("Incorrect❌")
-        print(f"Correct answer: {q["option"]}")
+        user_ans = input("Your answer: ").upper()
+        if user_ans == q["answer"]:
+            print("Correct!\n")
+            score += 1
+        else:
+            print("Incorrect❌")
+            print(f"Correct answer: {q["answer"]}\n")
 
-    ques_numb += 1
+    print(f"Your final score: {score}/{len(quiz)}")
 
 
+# suffle serial function
 def serial(quiz):
     random.shuffle(quiz)
 
 
-if __name__ == "__main__":
-    ask = input("Do you want play?(y/n): ").lower()
-    if ask == "n":
-        quit()
-
-    print("Welcome to Computer Quiz!")
-    print("Choose your Category:")
+# user function
+def user():
+    print("\nWelcome to Computer Quiz!")
+    print("\nChoose your Category:")
     print("1. Software Development\n2. Software Design & Architecture\n3. SDLC (Software Development Life Cycle")
 
     category = {1: "Software Development", 2: "Software Design & Architecture",
                 3: "SDLC (Software Development Life Cycle)"}
 
-    choice = int(input("Enter your choice: "))
+    choice = int(input("\nEnter your choice: "))
 
     if choice in category:
-        print(category[choice].upper())
+        print(f"\n{category[choice].upper()}")
 
         if choice == 1:
             software_development()
+        elif choice == 2:
+            Software_Design_Architecture()
+        else:
+            SDLC()
+
+
+# main function
+if __name__ == "__main__":
+    while True:  # ask user again & again
+        ask = input("Do you want play?(y/n): ").lower()
+        if ask == "n":
+            quit()
+        user()
+
+        again = input("Want to try again?[y/n]: ").lower()
+        if again == "n":
+            print("Thanks for playing!")
+            quit()
+        else:
+            user()
