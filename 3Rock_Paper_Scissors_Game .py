@@ -56,4 +56,5 @@ def game():
             print("Thanks for playing")
 
 
-game()
+if __name__ == "__main__":
+    game()
